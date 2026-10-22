@@ -39,6 +39,7 @@
   #banner .title { font-size: clamp(26px, 6vw, 44px); font-weight: 800; letter-spacing: .02em; }
   #banner .sub { font-size: 15px; font-weight: 600; color: #ffd0d0; margin-top: 4px; }
   #banner.idle .title { font-size: 18px; font-weight: 600; color: var(--muted); }
+  #banner.idle .sub { color: #ffb35a; }
   #banner.flash { animation: flash .6s ease-out 2; }
   @keyframes flash { from { background: #4a0d0d; } to { background: #0b0c0f; } }
 
@@ -71,7 +72,8 @@
     <div id="displaySource">
       <div class="row">
         <button id="startDisplay" class="primary">Capture system audio</button>
-        <span class="muted">Chrome / Edge on Windows: choose <b>Entire screen</b> and tick <b>Share system audio</b>.</span>
+        <span class="muted">Chrome / Edge / Brave: in the share dialog choose the <b>Entire screen</b> tab (not a window:
+          a window has no sound) and tick <b>Share system audio</b>.</span>
       </div>
     </div>
     <p id="firefoxNote" class="muted hidden">Firefox can't capture system audio directly. Use an input device below.</p>

@@ -128,7 +128,8 @@ async function startDisplayCapture() {
   });
   if (!stream.getAudioTracks().length) {
     stream.getTracks().forEach(t => t.stop());
-    throw new Error('No audio was shared. Choose "Entire screen" and tick "Share system audio".');
+    throw new Error('No sound was shared. Click "Capture system audio" again, choose the "Entire screen" tab ' +
+                    '(a window has no sound) and tick "Share system audio".');
   }
   // Only the audio is needed.
   stream.getVideoTracks().forEach(t => t.stop());
@@ -188,6 +189,7 @@ async function start(kind) {
     const msg = e.name === "NotAllowedError" ? "Permission was denied or the share dialog was cancelled." : e.message;
     setStatus(msg);
     addLog(msg, "info");
+    banner.querySelector(".sub").textContent = msg;
   }
 }
 
