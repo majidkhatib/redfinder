@@ -1,0 +1,19 @@
+{
+ "Item_Container_Big_Metal_Up": 0.66,
+ "Item_Misc_Big_Blunt_Up": 0.7,
+ "Item_Misc_Big_Wood_Up": 0.84,
+ "Item_Misc_Med_Fabric_Up": 0.66,
+ "Item_Misc_Med_Metal_Crisp_Up": 0.68,
+ "Item_Misc_Med_Statue_Up": 0.78,
+ "Item_Misc_Med_Wood_Clock_Up": 0.7,
+ "Item_Misc_Med_Wood_Up": 0.67,
+ "Item_Misc_Small_Comp_Up": 0.82,
+ "Item_Misc_Small_Fabric_Up": 0.88,
+ "Prop_Acc_Clock_UP": 0.72,
+ "Prop_Acc_Concrete_UP": 0.7,
+ "Prop_Acc_Fuel_UP": 0.73,
+ "Prop_Acc_PC_UP": 0.78,
+ "Prop_Acc_Radio_UP": 0.72,
+ "Prop_Acc_Statue_UP": 0.71,
+ "Prop_Acc_Tech_Small_UP": 0.66
+}

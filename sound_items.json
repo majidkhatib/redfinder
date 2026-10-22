@@ -1,0 +1,1015 @@
+[
+ {
+  "id": 1,
+  "file": "Item_Misc_Med_Comp_Up.ogg",
+  "items": [
+   {
+    "name": "Oil",
+    "rarity": 4,
+    "price": 15223
+   },
+   {
+    "name": "Kerosene Lamp",
+    "rarity": 4,
+    "price": 30738
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "file": "Item_Container_Big_Metal_Up.ogg",
+  "items": [
+   {
+    "name": "Fuel Tank",
+    "rarity": 5,
+    "price": 125904
+   },
+   {
+    "name": "High Energy Fuel",
+    "rarity": 5,
+    "price": 103684
+   },
+   {
+    "name": "Oil Drum",
+    "rarity": 4,
+    "price": 16269
+   },
+   {
+    "name": "Propane Tank",
+    "rarity": 4,
+    "price": 30902
+   },
+   {
+    "name": "Portable Fuel Canister",
+    "rarity": 4,
+    "price": 29714
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "file": "Item_Misc_Med_Fabric_Up.ogg",
+  "items": [
+   {
+    "name": "Large-Caliber Artillery Gunpowder Pack",
+    "rarity": 5,
+    "price": 320891
+   },
+   {
+    "name": "Paracord",
+    "rarity": 4,
+    "price": 16555
+   },
+   {
+    "name": "Camping Tarp",
+    "rarity": 3,
+    "price": 8880
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "file": "Prop_Acc_Fuel_UP.ogg",
+  "items": [
+   {
+    "name": "Impact-resistant Hard Rubber",
+    "rarity": 4,
+    "price": 31169
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "file": "Prop_Acc_Concrete_UP.ogg",
+  "items": [
+   {
+    "name": "Bag of Cement",
+    "rarity": 4,
+    "price": 16365
+   }
+  ]
+ },
+ {
+  "id": 6,
+  "file": "Item_Misc_Med_Metal_Crisp_Up.ogg",
+  "items": [
+   {
+    "name": "Titanium Alloy Plate",
+    "rarity": 5,
+    "price": 126903
+   }
+  ]
+ },
+ {
+  "id": 7,
+  "file": "Prop_Acc_Plastic_Large_UP_01.ogg",
+  "items": [
+   {
+    "name": "Rubber Pad",
+    "rarity": 3,
+    "price": 9788
+   }
+  ]
+ },
+ {
+  "id": 8,
+  "file": "Item_Misc_Med_Wood_Up.ogg",
+  "items": [
+   {
+    "name": "Record Player",
+    "rarity": 5,
+    "price": 297480
+   },
+   {
+    "name": "Vintage Typewriter",
+    "rarity": 5,
+    "price": 301920
+   },
+   {
+    "name": "Acoustic Panel",
+    "rarity": 3,
+    "price": 9889
+   },
+   {
+    "name": "Wood Board",
+    "rarity": 3,
+    "price": 8174
+   }
+  ]
+ },
+ {
+  "id": 9,
+  "file": "Item_Misc_Small_Comp_Up.ogg",
+  "items": [
+   {
+    "name": "Sound-Muffling Cotton",
+    "rarity": 5,
+    "price": 127902
+   },
+   {
+    "name": "Hearing Aid",
+    "rarity": 4,
+    "price": 27706
+   },
+   {
+    "name": "Bios.",
+    "rarity": 4,
+    "price": 14367
+   },
+   {
+    "name": "Rangefinder Binoculars",
+    "rarity": 4,
+    "price": 15699
+   },
+   {
+    "name": "Portable Transceiver",
+    "rarity": 4,
+    "price": 15794
+   },
+   {
+    "name": "Lens",
+    "rarity": 4,
+    "price": 14842
+   },
+   {
+    "name": "High Power Flashlight",
+    "rarity": 3,
+    "price": 8577
+   },
+   {
+    "name": "Safety Hammer",
+    "rarity": 3,
+    "price": 6862
+   },
+   {
+    "name": "Glucose Injection",
+    "rarity": 3,
+    "price": 3978
+   },
+   {
+    "name": "Weapon Parts",
+    "rarity": 3,
+    "price": 9385
+   },
+   {
+    "name": "Disinfectant",
+    "rarity": 1,
+    "price": 2517
+   }
+  ]
+ },
+ {
+  "id": 10,
+  "file": "Item_Misc_ElectronicDevice_Up.ogg",
+  "items": [
+   {
+    "name": "TI Module",
+    "rarity": 6,
+    "price": 1332000
+   },
+   {
+    "name": "Target Positioning Module",
+    "rarity": 6,
+    "price": 1498500
+   },
+   {
+    "name": "UPS Unit",
+    "rarity": 5,
+    "price": 319680
+   },
+   {
+    "name": "Vector Processor",
+    "rarity": 5,
+    "price": 322754
+   },
+   {
+    "name": "Automated External Defibrillator",
+    "rarity": 5,
+    "price": 288600
+   },
+   {
+    "name": "Insulin Pump",
+    "rarity": 5,
+    "price": 79920
+   },
+   {
+    "name": "Antenna",
+    "rarity": 5,
+    "price": 103906
+   },
+   {
+    "name": "Leveler",
+    "rarity": 5,
+    "price": 279720
+   },
+   {
+    "name": "Laser Pointer Module",
+    "rarity": 5,
+    "price": 306360
+   },
+   {
+    "name": "Game Console",
+    "rarity": 5,
+    "price": 89910
+   },
+   {
+    "name": "Gold Phone",
+    "rarity": 5,
+    "price": 84915
+   },
+   {
+    "name": "Video Camera",
+    "rarity": 5,
+    "price": 310800
+   },
+   {
+    "name": "Laptop Computer",
+    "rarity": 5,
+    "price": 315240
+   },
+   {
+    "name": "Chip Processor",
+    "rarity": 4,
+    "price": 13510
+   },
+   {
+    "name": "Game Cartridge",
+    "rarity": 4,
+    "price": 13891
+   },
+   {
+    "name": "Thermometer",
+    "rarity": 4,
+    "price": 14271
+   },
+   {
+    "name": "Gas Analyzer",
+    "rarity": 4,
+    "price": 15508
+   },
+   {
+    "name": "Air Tightness Tester",
+    "rarity": 4,
+    "price": 15603
+   },
+   {
+    "name": "Oscilloscope",
+    "rarity": 4,
+    "price": 29837
+   },
+   {
+    "name": "Gimbal",
+    "rarity": 4,
+    "price": 27972
+   },
+   {
+    "name": "Radio",
+    "rarity": 4,
+    "price": 30370
+   },
+   {
+    "name": "Camera",
+    "rarity": 4,
+    "price": 28238
+   },
+   {
+    "name": "Data Cable",
+    "rarity": 4,
+    "price": 15889
+   },
+   {
+    "name": "Floppy Drive",
+    "rarity": 3,
+    "price": 8375
+   },
+   {
+    "name": "VGA Display Cable",
+    "rarity": 3,
+    "price": 4440
+   },
+   {
+    "name": "Wave Filter",
+    "rarity": 3,
+    "price": 7265
+   },
+   {
+    "name": "Receiver",
+    "rarity": 3,
+    "price": 9485
+   },
+   {
+    "name": "DVD",
+    "rarity": 3,
+    "price": 9687
+   },
+   {
+    "name": "Flashlight",
+    "rarity": 1,
+    "price": 2757
+   }
+  ]
+ },
+ {
+  "id": 11,
+  "file": "Prop_Acc_Plastic_Small_UP.ogg",
+  "items": [
+   {
+    "name": "Power Cable",
+    "rarity": 3,
+    "price": 4394
+   }
+  ]
+ },
+ {
+  "id": 12,
+  "file": "Prop_Acc_Tech_Small_UP.ogg",
+  "items": [
+   {
+    "name": "Graphics Card",
+    "rarity": 5,
+    "price": 125914
+   },
+   {
+    "name": "PSU",
+    "rarity": 4,
+    "price": 31435
+   },
+   {
+    "name": "SSD",
+    "rarity": 4,
+    "price": 26906
+   }
+  ]
+ },
+ {
+  "id": 13,
+  "file": "Prop_Acc_PC_UP.ogg",
+  "items": [
+   {
+    "name": "Working LCD",
+    "rarity": 4,
+    "price": 28505
+   },
+   {
+    "name": "Broken LCD",
+    "rarity": 3,
+    "price": 8275
+   }
+  ]
+ },
+ {
+  "id": 14,
+  "file": "Item_Misc_Big_Wood_Up.ogg",
+  "items": [
+   {
+    "name": "Double-Neck Lute",
+    "rarity": 6,
+    "price": 1544333
+   },
+   {
+    "name": "Studio Monitor",
+    "rarity": 5,
+    "price": 102159
+   }
+  ]
+ },
+ {
+  "id": 15,
+  "file": "Prop_Acc_Battery_Small_UP_01.ogg",
+  "items": [
+   {
+    "name": "Battery",
+    "rarity": 1,
+    "price": 1265
+   },
+   {
+    "name": "D-size Battery",
+    "rarity": 1,
+    "price": 2158
+   }
+  ]
+ },
+ {
+  "id": 16,
+  "file": "Item_Acc_Med_Comp_Up.ogg",
+  "items": [
+   {
+    "name": "Solar Panel",
+    "rarity": 4,
+    "price": 27439
+   }
+  ]
+ },
+ {
+  "id": 17,
+  "file": "Item_Misc_Med_Metal_Blunt_Up.ogg",
+  "items": [
+   {
+    "name": "Battery-Powered Positive Electrode Module",
+    "rarity": 5,
+    "price": 320192
+   },
+   {
+    "name": "Arched Corrugated Steel Plate",
+    "rarity": 5,
+    "price": 304823
+   },
+   {
+    "name": "Portable Jack",
+    "rarity": 4,
+    "price": 28771
+   },
+   {
+    "name": "Pipe Cleaning Kit",
+    "rarity": 4,
+    "price": 15318
+   },
+   {
+    "name": "Oil Bottle",
+    "rarity": 4,
+    "price": 15413
+   },
+   {
+    "name": "Handheld Fill Light",
+    "rarity": 4,
+    "price": 29038
+   },
+   {
+    "name": "Camping Stove",
+    "rarity": 4,
+    "price": 32501
+   },
+   {
+    "name": "Glue Gun",
+    "rarity": 3,
+    "price": 4533
+   }
+  ]
+ },
+ {
+  "id": 18,
+  "file": "Item_Misc_Small_Metal_Blunt_Up.ogg",
+  "items": [
+   {
+    "name": "Lyre",
+    "rarity": 6,
+    "price": 1366000
+   },
+   {
+    "name": "Heavenly Sphere",
+    "rarity": 6,
+    "price": 1368615
+   },
+   {
+    "name": "Prototype Calculation Module",
+    "rarity": 6,
+    "price": 1509600
+   },
+   {
+    "name": "MRID Clamshell Laptop",
+    "rarity": 6,
+    "price": 1512222
+   },
+   {
+    "name": "Hydraulic Wrench",
+    "rarity": 5,
+    "price": 86913
+   },
+   {
+    "name": "Porcelain",
+    "rarity": 5,
+    "price": 293040
+   },
+   {
+    "name": "Gold Block",
+    "rarity": 5,
+    "price": 270840
+   },
+   {
+    "name": "Sergey 1 Satellite Model",
+    "rarity": 5,
+    "price": 469248
+   },
+   {
+    "name": "Raw Diamond Ore",
+    "rarity": 5,
+    "price": 498375
+   },
+   {
+    "name": "Solar Charger",
+    "rarity": 5,
+    "price": 48778
+   },
+   {
+    "name": "Ni-Cd Battery Pack",
+    "rarity": 5,
+    "price": 50333
+   },
+   {
+    "name": "Infrared Therapy Lamp",
+    "rarity": 5,
+    "price": 306360
+   },
+   {
+    "name": "Handheld Salinity Meter",
+    "rarity": 5,
+    "price": 49556
+   },
+   {
+    "name": "Electric Drill",
+    "rarity": 4,
+    "price": 31702
+   },
+   {
+    "name": "Toolkit",
+    "rarity": 4,
+    "price": 31968
+   },
+   {
+    "name": "Hydraulic Rebar Cutter",
+    "rarity": 4,
+    "price": 32767
+   },
+   {
+    "name": "Cannon Shell",
+    "rarity": 4,
+    "price": 30103
+   },
+   {
+    "name": "Handheld Receiver",
+    "rarity": 4,
+    "price": 30055
+   },
+   {
+    "name": "Handheld Calculator",
+    "rarity": 4,
+    "price": 30260
+   },
+   {
+    "name": "Pipe Wrench",
+    "rarity": 3,
+    "price": 4486
+   },
+   {
+    "name": "Silver Badge",
+    "rarity": 3,
+    "price": 7064
+   },
+   {
+    "name": "Spur",
+    "rarity": 3,
+    "price": 4764
+   }
+  ]
+ },
+ {
+  "id": 19,
+  "file": "Item_Container_Small_Metal_Up.ogg",
+  "items": [
+   {
+    "name": "Toolbox",
+    "rarity": 3,
+    "price": 8476
+   }
+  ]
+ },
+ {
+  "id": 20,
+  "file": "Item_Misc_Big_Blunt_Up.ogg",
+  "items": [
+   {
+    "name": "Blowtorch",
+    "rarity": 5,
+    "price": 90576
+   }
+  ]
+ },
+ {
+  "id": 21,
+  "file": "Item_Misc_Small_Wood_Up.ogg",
+  "items": [
+   {
+    "name": "Photo Frame",
+    "rarity": 3,
+    "price": 4671
+   }
+  ]
+ },
+ {
+  "id": 22,
+  "file": "Item_Misc_Small_Metal_Crisp_Up.ogg",
+  "items": [
+   {
+    "name": "EEG",
+    "rarity": 6,
+    "price": 1524789
+   },
+   {
+    "name": "Gilded Cage Music Box",
+    "rarity": 6,
+    "price": 1620600
+   },
+   {
+    "name": "Phaethon's Clock",
+    "rarity": 6,
+    "price": 1531800
+   },
+   {
+    "name": "Ancient Golden Mask Replica",
+    "rarity": 6,
+    "price": 1647474
+   },
+   {
+    "name": "Peacock Fan",
+    "rarity": 6,
+    "price": 1371231
+   },
+   {
+    "name": "Aerospace Navigator",
+    "rarity": 6,
+    "price": 1598400
+   },
+   {
+    "name": "Metal Heart",
+    "rarity": 5,
+    "price": 308463
+   },
+   {
+    "name": "Gold Watch",
+    "rarity": 5,
+    "price": 80919
+   },
+   {
+    "name": "Jade Bracelet",
+    "rarity": 5,
+    "price": 456619
+   },
+   {
+    "name": "Gold Pen",
+    "rarity": 5,
+    "price": 458373
+   },
+   {
+    "name": "Gungnir Blueprint Fragments",
+    "rarity": 5,
+    "price": 305755
+   },
+   {
+    "name": "Toland Access Card",
+    "rarity": 5,
+    "price": 53444
+   },
+   {
+    "name": "Voss' Journal",
+    "rarity": 5,
+    "price": 89078
+   },
+   {
+    "name": "T-147 Individual Communication Device",
+    "rarity": 5,
+    "price": 89540
+   },
+   {
+    "name": "Watch",
+    "rarity": 4,
+    "price": 14081
+   },
+   {
+    "name": "Capacitance Analyzer",
+    "rarity": 4,
+    "price": 30404
+   },
+   {
+    "name": "Handheld Tester",
+    "rarity": 4,
+    "price": 30414
+   },
+   {
+    "name": "Electronic Stethoscope",
+    "rarity": 4,
+    "price": 29885
+   },
+   {
+    "name": "Military Tool Kit",
+    "rarity": 4,
+    "price": 30568
+   },
+   {
+    "name": "Personal Digital Assistant",
+    "rarity": 4,
+    "price": 30226
+   },
+   {
+    "name": "GU-470 Portable Recorder",
+    "rarity": 4,
+    "price": 15818
+   }
+  ]
+ },
+ {
+  "id": 23,
+  "file": "Item_Misc_Small_Fabric_Up.ogg",
+  "items": [
+   {
+    "name": "Bag of Fertilizer",
+    "rarity": 4,
+    "price": 16460
+   }
+  ]
+ },
+ {
+  "id": 24,
+  "file": "Item_Misc_Small_Glass_Up.ogg",
+  "items": [
+   {
+    "name": "Deluxe Tea Set",
+    "rarity": 5,
+    "price": 105208
+   },
+   {
+    "name": "Pheromone Test Kit",
+    "rarity": 5,
+    "price": 324120
+   },
+   {
+    "name": "Blocker Injector",
+    "rarity": 5,
+    "price": 52667
+   }
+  ]
+ },
+ {
+  "id": 25,
+  "file": "Item_Misc_Med_Wood_Clock_Up.ogg",
+  "items": [
+   {
+    "name": "Lute",
+    "rarity": 4,
+    "price": 28660
+   }
+  ]
+ },
+ {
+  "id": 26,
+  "file": "Item_Glass_Up.ogg",
+  "items": [
+   {
+    "name": "Syringe",
+    "rarity": 3,
+    "price": 4024
+   }
+  ]
+ },
+ {
+  "id": 27,
+  "file": "Item_Food_Bag_Up.ogg",
+  "items": [
+   {
+    "name": "Medical Sponge",
+    "rarity": 1,
+    "price": 1449
+   }
+  ]
+ },
+ {
+  "id": 28,
+  "file": "Prop_Acc_Statue_UP.ogg",
+  "items": [
+   {
+    "name": "Gold Lion Statue",
+    "rarity": 6,
+    "price": 1540125
+   },
+   {
+    "name": "Gold Cheetah Statue",
+    "rarity": 5,
+    "price": 87912
+   }
+  ]
+ },
+ {
+  "id": 29,
+  "file": "Item_Coin_Up.ogg",
+  "items": [
+   {
+    "name": "Gold Bracelet",
+    "rarity": 5,
+    "price": 81918
+   },
+   {
+    "name": "Commemorative Coin",
+    "rarity": 4,
+    "price": 14462
+   }
+  ]
+ },
+ {
+  "id": 30,
+  "file": "Item_Misc_Med_Glass_Up.ogg",
+  "items": [
+   {
+    "name": "Northern Stars Amber Drink",
+    "rarity": 6,
+    "price": 1548111
+   },
+   {
+    "name": "Mutant Heart Sample",
+    "rarity": 5,
+    "price": 321900
+   }
+  ]
+ },
+ {
+  "id": 31,
+  "file": "Prop_Acc_Clock_UP.ogg",
+  "items": [
+   {
+    "name": "Desk Clock",
+    "rarity": 4,
+    "price": 29304
+   }
+  ]
+ },
+ {
+  "id": 32,
+  "file": "Prop_Acc_Teapot_UP.ogg",
+  "items": [
+   {
+    "name": "Antique Teapot",
+    "rarity": 6,
+    "price": 1415250
+   }
+  ]
+ },
+ {
+  "id": 33,
+  "file": "Item_GoldChain_Up.ogg",
+  "items": [
+   {
+    "name": "Gem Necklace",
+    "rarity": 6,
+    "price": 1456875
+   },
+   {
+    "name": "Diamond Ring",
+    "rarity": 5,
+    "price": 82917
+   },
+   {
+    "name": "Brooch",
+    "rarity": 5,
+    "price": 83916
+   },
+   {
+    "name": "Silver Chain",
+    "rarity": 4,
+    "price": 14557
+   },
+   {
+    "name": "Pocket Watch",
+    "rarity": 4,
+    "price": 14652
+   }
+  ]
+ },
+ {
+  "id": 34,
+  "file": "Item_Misc_Med_Paper_Up.ogg",
+  "items": [
+   {
+    "name": "Stamp Album",
+    "rarity": 5,
+    "price": 92907
+   }
+  ]
+ },
+ {
+  "id": 35,
+  "file": "Item_Misc_Small_Paper_Up.ogg",
+  "items": [
+   {
+    "name": "Mutant Evolution Sketch",
+    "rarity": 5,
+    "price": 304140
+   },
+   {
+    "name": "Stamp",
+    "rarity": 3,
+    "price": 7165
+   },
+   {
+    "name": "Document",
+    "rarity": 3,
+    "price": 9183
+   }
+  ]
+ },
+ {
+  "id": 36,
+  "file": "Item_Misc_Med_Statue_Up.ogg",
+  "items": [
+   {
+    "name": "Majestic Sculpture",
+    "rarity": 6,
+    "price": 1581750
+   },
+   {
+    "name": "Gold Snake",
+    "rarity": 6,
+    "price": 1429080
+   },
+   {
+    "name": "Optoelectronic Hyperspace Model",
+    "rarity": 6,
+    "price": 1371484
+   },
+   {
+    "name": "Gold Cup",
+    "rarity": 5,
+    "price": 275280
+   },
+   {
+    "name": "K7-L Cipher Machine",
+    "rarity": 5,
+    "price": 308782
+   },
+   {
+    "name": "Plaster Sculpture",
+    "rarity": 4,
+    "price": 33034
+   },
+   {
+    "name": "Military Canteen",
+    "rarity": 3,
+    "price": 4903
+   }
+  ]
+ },
+ {
+  "id": 37,
+  "file": "Item_Misc_Big_Paper_Up.ogg",
+  "items": [
+   {
+    "name": "Bundle of Rice Paper",
+    "rarity": 4,
+    "price": 30549
+   },
+   {
+    "name": "Hardcover",
+    "rarity": 3,
+    "price": 4810
+   }
+  ]
+ },
+ {
+  "id": 38,
+  "file": "Prop_Acc_Radio_UP.ogg",
+  "items": [
+   {
+    "name": "Military Radio",
+    "rarity": 5,
+    "price": 104905
+   }
+  ]
+ }
+]
