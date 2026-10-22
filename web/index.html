@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ABI Red Item Detector</title>
+<style>
+  :root {
+    --bg: #111317; --panel: #1a1d23; --line: #2a2f38; --text: #e6e8eb; --muted: #8b929c;
+    --accent: #ff2a2a; --ok: #3ecf6e; --bar: #4a90e2;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.45 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 22px; margin: 8px 0 4px; }
+  h2 { font-size: 15px; margin: 0 0 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  p { margin: 6px 0; }
+  .muted { color: var(--muted); font-size: 13px; }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+            padding: 14px 16px; margin: 12px 0; }
+  button { background: #2a3040; color: var(--text); border: 1px solid #3a4254; border-radius: 6px;
+           padding: 8px 14px; font: inherit; cursor: pointer; }
+  button:hover:not(:disabled) { background: #343b4e; }
+  button:disabled { opacity: .45; cursor: default; }
+  button.primary { background: #b8202a; border-color: #d6303a; }
+  button.primary:hover:not(:disabled) { background: #cc2630; }
+  select, input[type=number] { background: #0f1115; color: var(--text); border: 1px solid #3a4254;
+                               border-radius: 6px; padding: 7px 8px; font: inherit; }
+  select { max-width: 100%; }
+  input[type=number] { width: 80px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0; }
+  label { display: inline-flex; gap: 6px; align-items: center; }
+  code { background: #0f1115; padding: 1px 5px; border-radius: 4px; }
+
+  #banner { text-align: center; padding: 18px 12px; border-radius: 8px; background: #0b0c0f;
+            border: 1px solid var(--line); min-height: 112px; display: flex; flex-direction: column;
+            justify-content: center; }
+  #banner .title { font-size: clamp(26px, 6vw, 44px); font-weight: 800; letter-spacing: .02em; }
+  #banner .sub { font-size: 15px; font-weight: 600; color: #ffd0d0; margin-top: 4px; }
+  #banner.idle .title { font-size: 18px; font-weight: 600; color: var(--muted); }
+  #banner.flash { animation: flash .6s ease-out 2; }
+  @keyframes flash { from { background: #4a0d0d; } to { background: #0b0c0f; } }
+
+  .status-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #555; margin-right: 6px; }
+  .status-dot.on { background: var(--ok); }
+  .meter { height: 6px; background: #0f1115; border-radius: 3px; overflow: hidden; flex: 1; min-width: 120px; }
+  .meter > div { height: 100%; width: 0; background: var(--ok); transition: width .1s; }
+  .score { display: grid; grid-template-columns: minmax(0, 1fr) 140px 40px; gap: 8px; align-items: center;
+           font: 13px/1.6 Consolas, monospace; }
+  .score .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .score .meter > div { background: var(--bar); }
+  #log { font: 13px/1.6 Consolas, monospace; max-height: 260px; overflow-y: auto; margin: 0;
+         padding: 0; list-style: none; }
+  #log li { border-bottom: 1px solid var(--line); padding: 2px 0; overflow-wrap: anywhere; }
+  #log .red { color: #ff6b6b; } #log .possible { color: #ff9a5a; } #log .info { color: var(--muted); }
+  .hidden { display: none !important; }
+  .warn { color: #ffb35a; }
+</style>
+</head>
+<body>
+<main>
+  <h1>ABI Red Item Detector</h1>
+  <p class="muted">Listens to your PC's sound output and alerts when it hears an Arena Breakout: Infinite merchant
+    sound that belongs to a red item. Sounds and items from abibuilder.com/merchant. Everything runs locally in your browser.</p>
+
+  <div id="banner" class="idle"><div class="title">Not listening</div><div class="sub"></div></div>
+
+  <section>
+    <h2>1. Audio source</h2>
+    <div id="displaySource">
+      <div class="row">
+        <button id="startDisplay" class="primary">Capture system audio</button>
+        <span class="muted">Chrome / Edge on Windows: choose <b>Entire screen</b> and tick <b>Share system audio</b>.</span>
+      </div>
+    </div>
+    <p id="firefoxNote" class="muted hidden">Firefox can't capture system audio directly. Use an input device below.</p>
+    <div class="row">
+      <button id="startDevice">Use input device</button>
+      <select id="deviceSelect"><option value="">(click "Refresh devices" first)</option></select>
+      <button id="refreshDevices">Refresh devices</button>
+    </div>
+    <p class="muted">For an input device, pick a loopback device that carries your game audio:
+      Windows <b>Stereo Mix</b> (enable it in Sound settings &rarr; Recording) or <b>CABLE Output</b> from VB-Audio Virtual Cable.</p>
+    <div class="row">
+      <button id="stop" disabled>Stop</button>
+      <span><span id="dot" class="status-dot"></span><span id="status">Idle</span></span>
+      <div class="meter" title="Input level"><div id="level"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Alerts</h2>
+    <div class="row">
+      <label><input type="checkbox" id="beep" checked> Beep</label>
+      <label><input type="checkbox" id="notify"> Desktop notification</label>
+      <label><input type="checkbox" id="showAll"> Also show non-red merchant sounds</label>
+    </div>
+    <div class="row">
+      <label>Minimum match score <input type="number" id="threshold" min="0.3" max="0.95" step="0.01" value="0.65"></label>
+      <span class="muted">default 0.65; raise it if you get false alerts</span>
+    </div>
+    <div class="row" id="pipRow">
+      <button id="popout">Pop out always-on-top alert window</button>
+      <span class="muted">Stays above a <b>Borderless / Windowed</b> game (Chrome / Edge).</span>
+    </div>
+    <p id="pipNote" class="muted hidden">This browser has no always-on-top pop-out. Use desktop notifications and the beep
+      while the game is in front.</p>
+  </section>
+
+  <section>
+    <h2>Live match scores</h2>
+    <div id="scores" class="muted">Start listening to see the closest merchant sounds.</div>
+  </section>
+
+  <section>
+    <h2>Too many false alerts? Learn</h2>
+    <p class="muted">Start listening, then play normally <b>away from the merchant</b> (gunfire, footsteps, looting, voice chat).
+      This raises the per-sound thresholds for sounds your normal game audio resembles. Thresholds only go up and are
+      saved in this browser.</p>
+    <div class="row">
+      <label>Seconds <input type="number" id="learnSeconds" min="10" max="3600" step="10" value="300"></label>
+      <button id="learn" disabled>Start learning</button>
+      <button id="resetThresholds">Reset thresholds</button>
+      <span id="learnStatus" class="muted"></span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Log</h2>
+    <ul id="log"></ul>
+  </section>
+</main>
+<script src="detector.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

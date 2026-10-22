@@ -14,6 +14,41 @@ Double-click `run.bat`. The first time, it installs the Python packages it needs
 - The bot listens to the **default Windows output device** (your headset or speakers).
 - An alert appears about 0.6–1 s after the sound, once the whole sound has been heard.
 
+## Web version (Chrome, Edge, Firefox)
+
+The `web/` folder is a browser version of the same detector. It doesn't need
+Python packages and gives the same detections. It runs entirely in the browser;
+no audio leaves your PC.
+
+**Start it:** double-click `web.bat` (it needs Python only for a tiny local web
+server) and the page opens at http://localhost:8000/web/. The page can't be opened
+as a plain file, because browsers block loading the sounds from `file://`. You can
+also host the repo with GitHub Pages and open `https://<user>.github.io/redfinder/web/`.
+
+**Pick the audio source:**
+
+- **Chrome / Edge:** click *Capture system audio*, choose **Entire screen**, and
+  tick **Share system audio**. Only the audio is used.
+- **Firefox** (or any browser): Firefox can't capture system audio, so use an
+  input device that carries your game audio and click *Use input device*:
+  - **Stereo Mix:** enable it in Windows Sound settings → Recording, or
+  - **VB-Audio Virtual Cable:** select *CABLE Output*, and route the game to it
+    (with *Listen to this device* turned on so you still hear it).
+
+**Alerts:** a browser page can't draw over the game, so alerts come as:
+
+- a beep,
+- a Windows desktop notification (tick *Desktop notification*; turn off Focus
+  assist / Do not disturb for games, or it hides them),
+- in Chrome / Edge, an **always-on-top pop-out window** that stays above a
+  Borderless / Windowed game. Drag it to the top of the screen.
+
+The *Live match scores* panel replaces `--calibrate`, *Also show non-red merchant
+sounds* replaces `--all`, and the *Learn* section replaces `--learn`. Learned
+thresholds are saved in the browser, not in `thresholds.json`.
+
+Keep the tab open (it may be in the background) while you play.
+
 ## What the alert means
 
 Most merchant sounds are shared between several items of different rarities.
@@ -53,3 +88,5 @@ it several times; thresholds only go up. To reset, restore the original
 - `sound_items.json`: which items (and rarities) use each sound
 - `thresholds.json`: per-sound match thresholds
 - `selftest.py`: offline accuracy test (`python selftest.py`)
+- `web/`: the browser version (`detector.js` is a port of the matcher, `app.js` the page logic)
+- `web.bat`: serves the repo locally and opens the web version
