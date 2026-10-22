@@ -17,13 +17,13 @@ Double-click `run.bat`. The first time, it installs the Python packages it needs
 ## Web version (Chrome, Edge, Firefox)
 
 The `web/` folder is a browser version of the same detector. It doesn't need
-Python packages and gives the same detections. It runs entirely in the browser;
+Python and gives the same detections. It runs entirely in the browser;
 no audio leaves your PC.
 
-**Start it:** double-click `web.bat` (it needs Python only for a tiny local web
-server) and the page opens at http://localhost:8000/web/. The page can't be opened
-as a plain file, because browsers block loading the sounds from `file://`. You can
-also host the repo with GitHub Pages and open `https://<user>.github.io/redfinder/web/`.
+**Start it:** double-click `web/index.html` (or `web.bat`). It works straight from
+disk, with no install or web server. To use it from any PC, turn on GitHub Pages for
+the repo (Settings → Pages → Deploy from a branch → `main`, `/ (root)`) and open
+`https://<user>.github.io/redfinder/web/`.
 
 **Pick the audio source:**
 
@@ -89,4 +89,5 @@ it several times; thresholds only go up. To reset, restore the original
 - `thresholds.json`: per-sound match thresholds
 - `selftest.py`: offline accuracy test (`python selftest.py`)
 - `web/`: the browser version (`detector.js` is a port of the matcher, `app.js` the page logic)
-- `web.bat`: serves the repo locally and opens the web version
+- `web/data.js`: the sounds and item list bundled for the page; regenerate with `python web/build_data.py`
+- `web.bat`: opens the web version

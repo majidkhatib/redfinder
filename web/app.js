@@ -1,7 +1,6 @@
 "use strict";
 /* Browser front end: audio capture, alerts, learning. Matching lives in detector.js. */
 
-const DATA_ROOT = "..";                          // sound_items.json, thresholds.json and sounds/ live in the repo root
 const THRESHOLDS_KEY = "redfinder.thresholds";   // learned per-sound thresholds
 const SETTINGS_KEY = "redfinder.settings";
 
@@ -10,7 +9,7 @@ const banner = $("banner");   // kept as a reference: it moves into the pop-out 
 const isFirefox = /firefox/i.test(navigator.userAgent);
 
 const state = {
-  ctx: null, templates: null, templatesRate: 0,
+  ctx: null, hasWorklet: false, templates: null, templatesRate: 0,
   stream: null, source: null, tap: null,
   feat: null, matcher: null,
   learn: null,          // {until, maxScores} while learning
@@ -34,7 +33,7 @@ function storageSet(key, value) {
   } catch { /* private mode or blocked storage: settings just won't persist */ }
 }
 
-let defaultThresholds = {};
+const defaultThresholds = REDFINDER_DATA.thresholds;   // from data.js
 const perSound = () => storageGet(THRESHOLDS_KEY, defaultThresholds);
 
 // ---------------------------------------------------------------- templates
@@ -42,38 +41,21 @@ const perSound = () => storageGet(THRESHOLDS_KEY, defaultThresholds);
 async function loadTemplates(ctx) {
   if (state.templates && state.templatesRate === ctx.sampleRate) return state.templates;
   setStatus("Loading merchant sounds...");
-  const sounds = await (await fetch(`${DATA_ROOT}/sound_items.json`)).json();
   // decodeAudioData resamples to the context's rate, so templates match the live audio.
-  // Few fetches at a time: Python's http.server (web.bat) drops connections under a burst.
-  state.templates = await mapLimited(sounds, 4, async s => {
-    const res = await fetch(`${DATA_ROOT}/sounds/${s.file}`);
-    if (!res.ok) throw new Error(`Could not load sounds/${s.file} (${res.status})`);
-    const data = await res.arrayBuffer();
-    const buf = await ctx.decodeAudioData(data);
+  state.templates = await Promise.all(REDFINDER_DATA.sounds.map(async s => {
+    const bytes = Uint8Array.from(atob(REDFINDER_DATA.audio[s.file]), c => c.charCodeAt(0));
+    const buf = await ctx.decodeAudioData(bytes.buffer);
     const mono = new Float32Array(buf.length);
     for (let c = 0; c < buf.numberOfChannels; c++) {
       const ch = buf.getChannelData(c);
       for (let i = 0; i < mono.length; i++) mono[i] += ch[i] / buf.numberOfChannels;
     }
     return new Template(s, mono, ctx.sampleRate);
-  });
+  }));
   state.templatesRate = ctx.sampleRate;
   const reds = state.templates.filter(t => t.redItems.length).length;
   addLog(`Loaded ${state.templates.length} merchant sounds (${reds} can be red items) at ${ctx.sampleRate} Hz`, "info");
   return state.templates;
-}
-
-async function mapLimited(items, limit, fn) {
-  const out = new Array(items.length);
-  let next = 0;
-  const worker = async () => {
-    while (next < items.length) {
-      const i = next++;
-      out[i] = await fn(items[i]);
-    }
-  };
-  await Promise.all(Array.from({ length: limit }, worker));
-  return out;
 }
 
 function newMatcher() {
@@ -104,12 +86,38 @@ registerProcessor("tap", Tap);`;
 async function ensureContext() {
   if (!state.ctx) {
     state.ctx = new AudioContext();
-    const url = URL.createObjectURL(new Blob([TAP_SOURCE], { type: "text/javascript" }));
-    await state.ctx.audioWorklet.addModule(url);
-    URL.revokeObjectURL(url);
+    try {
+      const url = URL.createObjectURL(new Blob([TAP_SOURCE], { type: "text/javascript" }));
+      await state.ctx.audioWorklet.addModule(url);
+      URL.revokeObjectURL(url);
+      state.hasWorklet = true;
+    } catch {
+      // Pages opened from disk (file://) can't load worklet modules; createTap falls back.
+      state.hasWorklet = false;
+    }
   }
   await state.ctx.resume();
   return state.ctx;
+}
+
+/** Node that hands mono chunks of the input to onAudio. Its output is silence. */
+function createTap(ctx) {
+  if (state.hasWorklet) {
+    const tap = new AudioWorkletNode(ctx, "tap");
+    tap.port.onmessage = e => onAudio(e.data);
+    return tap;
+  }
+  const tap = ctx.createScriptProcessor(1024, 2, 1);
+  tap.onaudioprocess = e => {
+    const input = e.inputBuffer, mono = new Float32Array(input.length);
+    for (let c = 0; c < input.numberOfChannels; c++) {
+      const ch = input.getChannelData(c);
+      for (let i = 0; i < mono.length; i++) mono[i] += ch[i] / input.numberOfChannels;
+    }
+    e.outputBuffer.getChannelData(0).fill(0);
+    onAudio(mono);
+  };
+  return tap;
 }
 
 const RAW_AUDIO = { echoCancellation: false, noiseSuppression: false, autoGainControl: false };
@@ -165,8 +173,7 @@ async function start(kind) {
     if (kind === "device") saveSettings();
     state.stream = stream;
     state.source = ctx.createMediaStreamSource(stream);
-    state.tap = new AudioWorkletNode(ctx, "tap");
-    state.tap.port.onmessage = e => onAudio(e.data);
+    state.tap = createTap(ctx);
     state.source.connect(state.tap);
     // The tap outputs silence; connecting it keeps it running. Never route the capture to the speakers.
     state.tap.connect(ctx.destination);
@@ -186,7 +193,8 @@ async function start(kind) {
 
 function stop() {
   if (state.learn) finishLearning(false);
-  state.tap?.port.close();
+  state.tap?.port?.close();
+  if (state.tap) state.tap.onaudioprocess = null;
   state.tap?.disconnect();
   state.source?.disconnect();
   state.stream?.getTracks().forEach(t => t.stop());
@@ -374,7 +382,7 @@ function loadSettings() {
   if ($("notify").checked && !("Notification" in window && Notification.permission === "granted")) $("notify").checked = false;
 }
 
-async function init() {
+function init() {
   loadSettings();
   if (isFirefox || !navigator.mediaDevices?.getDisplayMedia) {
     $("displaySource").classList.add("hidden");
@@ -404,15 +412,6 @@ async function init() {
     saveSettings();
   };
   window.addEventListener("beforeunload", e => { if (state.stream) e.preventDefault(); });
-
-  if (location.protocol === "file:") {
-    addLog("Open this page through a web server (see README), not as a file: the browser blocks loading the sounds.", "info");
-  }
-  try {
-    defaultThresholds = await (await fetch(`${DATA_ROOT}/thresholds.json`)).json();
-  } catch {
-    addLog("Could not load thresholds.json; using the minimum score for every sound.", "info");
-  }
 }
 
 init();
